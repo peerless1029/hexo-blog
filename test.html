@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="javascript:alert('清除缓存成功');">清除缓存</button>
+<script>
+    function validateValue(value) {
+        value = 5 * parseInt(value);
+        if (value > 10) {
+            document.getElementById("error-msg").style.display = "block";
+        }
+    }
+
+    function handleKeyPress(event) {
+        event = EventUtil.getEvent(event);
+        if (event.keyCode == 13) {
+            var target = EventUtil.getTarget(event);
+            validateValue(target.value);
+        }
+    }
+</script>
+</body>
+</html>

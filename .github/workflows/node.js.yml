@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - master
+jobs:
+  job:
+    name: Deployment
+    runs-on: macos-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # setup node
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12.16.3
+
+      - name: npm install
+        run: npm install
+
+      - name: hexo install
+        run: npm install -g hexo-cli
+
+      - name: Build
+        run: hexo generate
+
+      - name: upload production artifacts
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: public
+
+      # deploy
+      - name: Deploy Page To Release
+        id: deployment
+        uses: actions/deploy-pages@v1
