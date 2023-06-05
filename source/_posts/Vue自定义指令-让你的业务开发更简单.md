@@ -194,6 +194,7 @@ v-scroll-bottom="loadMore"
 可以看到，通过封装使用自定义指令，使我们的代码更简洁优雅，在实际开发中，可以根据具体场景和需求来使用自定义指令，以提高开发效率和代码质量。
 
 ****
+[directives.js代码文件](https://github.com/peerless1029/hexo-blog/blob/master/code/directives.js)
 注：代码基于vue2.x版本
 
 参考：
